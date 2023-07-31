@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage("Code") {
+        stage("Code Clone") {
             steps {
                 echo "Cloning the code"
                 git url: "https://github.com/nitishmalang/django-notes-app.git", branch: "main"
@@ -29,10 +29,9 @@ pipeline {
 
         stage("Deploy") {
             steps {
-                echo "Deploying The container"
+                echo "Deploying the container"
                 sh "docker-compose down && docker-compose up -d"
             }
         }
     }
 }
-
